@@ -1,5 +1,6 @@
 # QuickDither
 Customizable limited palette dithering library for Unity
+
 ![C64](https://raw.githubusercontent.com/Ooseykins/QuickDither/main/Examples/example_C64.png)
 
 ## Usage
