@@ -99,6 +99,8 @@ namespace QuickDither {
             return ditheredColors.ToArray();
         }
         public int ExpectedPaletteComplexity() {
+            if( palette.Length == 0)
+                return 0;
             return palette.Length + palette.Length * (palette.Length - 1) / 2 * (ditherDepth - 1);
         }
 
