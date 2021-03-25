@@ -1,6 +1,6 @@
 # QuickDither
 Customizable limited palette dithering library for Unity
-![C64](https://github.com/Ooseykins/QuickDither/blob/master/Examples/example_C64.png)
+![C64](https://raw.githubusercontent.com/Ooseykins/QuickDither/main/Examples/example_C64.png)
 
 ## Usage
 Use the post processing v2 dithered effect with the pattern, primary, and secondary textures set. 4 Bayer patterns are included. Alternatively, use the dithered material on a "Raw Image" component with a render texture.
