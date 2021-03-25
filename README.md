@@ -5,7 +5,7 @@ Customizable limited palette dithering library for Unity
 
 
 ## Usage
-Use the post processing v2 dithered effect with the pattern, primary, and secondary textures set. 4 Bayer patterns are included. Alternatively, use the dithered material on a "Raw Image" component with a render texture.
+This library is intended for the built in renderer using gamma colour. Use the post processing v2 dithered effect with the pattern, primary, and secondary textures set. 4 Bayer patterns are included. Alternatively, use the dithered material on a "Raw Image" component with a render texture.
 
 ### Creating 3D dither textures
 Add the PaletteTextureGenerator component to an empty gameobject. Pressing "Generate & Save Palette" will save the current palette to a 3D texture asset in "Assets/Dithered Palettes", with the name of the attached gameobject.
