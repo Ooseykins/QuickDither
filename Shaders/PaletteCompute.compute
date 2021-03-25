@@ -1,0 +1,54 @@
+﻿// Thanks to Joel Yliluoma for your awesome page on dithering!
+// Gamma correction and differenceFactor concepts were huge additions
+// https://bisqwit.iki.fi/story/howto/dither/jy/
+
+#pragma kernel CSMain
+
+float size;
+float differenceFactor;
+float gamma;
+int paletteLength;
+RWTexture3D<float4> PrimaryResult;
+RWTexture3D<float4> SecondaryResult;
+struct Dithered {
+	float4 primary;
+	float4 secondary;
+	float ratio;
+};
+RWStructuredBuffer<Dithered> palette;
+
+float colDiff(float3 c1, float3 c2) {
+	return (c1.x - c2.x)*(c1.x - c2.x) + (c1.y - c2.y)*(c1.y - c2.y) + (c1.z - c2.z)*(c1.z - c2.z);
+}
+float3 adjustGamma(float3 c) {
+	return float3(pow(abs(c.x), gamma), pow(abs(c.y), gamma), pow(abs(c.z), gamma));
+}
+float3 unadjustGamma(float3 c) {
+	return float3(pow(abs(c.x), 1.0 / gamma), pow(abs(c.y), 1.0 / gamma), pow(abs(c.z), 1.0 / gamma));
+}
+float3 mix(Dithered col) {
+	float3 gA = adjustGamma(col.primary.xyz);
+	float3 gB = adjustGamma(col.secondary.xyz);
+	return unadjustGamma(gB + (gA-gB) * col.ratio);
+}
+
+[numthreads(8,8,8)]
+void CSMain (uint3 id : SV_DispatchThreadID)
+{
+	float3 col = float3(id.x / (size-1.0), id.y / (size - 1.0), id.z / (size - 1.0));
+	float3 primary = float3(1.0, 1.0, 1.0);
+	float3 secondary = float3(1.0, 1.0, 1.0);
+	float ratio = 1.0;
+	float dist = 100000000000.0;
+	for (int i = 0; i < paletteLength; i++) {
+		float diff = colDiff(col, mix(palette[i])) + colDiff(palette[i].primary.xyz,palette[i].secondary.xyz)*differenceFactor;
+		if (diff < dist ) {
+			primary = palette[i].primary.xyz;
+			secondary = palette[i].secondary.xyz;
+			ratio = palette[i].ratio;
+			dist = diff;
+		}
+	}
+    PrimaryResult[id.xyz] = float4(primary.x,primary.y,primary.z,1.0-ratio);
+	SecondaryResult[id.xyz] = float4(secondary.x,secondary.y,secondary.z,ratio);
+}
