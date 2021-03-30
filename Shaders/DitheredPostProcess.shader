@@ -140,9 +140,10 @@ Shader "Dithered/DitheredPostProcess"
 				else
 				ifLocalVar78 = tex3D( _Secondary, tex2DNode16.rgb );
 				float4 lerpResult143 = lerp( tex2D( _MainTex, uv_MainTex ) , ifLocalVar78 , _Intensity);
+				float4 appendResult149 = (float4(lerpResult143.rgb , 1.0));
 				
 
-				float4 color = lerpResult143;
+				float4 color = appendResult149;
 				
 				return color;
 			}
@@ -155,7 +156,7 @@ Shader "Dithered/DitheredPostProcess"
 }
 /*ASEBEGIN
 Version=18600
-1920;0;1920;1059;1553.496;1931.758;2.936781;True;True
+1920;0;1920;1059;-1092.97;631.6583;1;True;True
 Node;AmplifyShaderEditor.RangedFloatNode;102;-1454.308,179.8068;Inherit;False;Property;_PixelScale;Pixel Scale;3;1;[IntRange];Create;True;0;0;False;0;False;3;0;1;32;0;1;FLOAT;0
 Node;AmplifyShaderEditor.TemplateShaderPropertyNode;19;-1641.758,-284.0669;Inherit;False;0;0;_MainTex;Pass;False;0;5;SAMPLER2D;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.TemplateShaderPropertyNode;146;-1682.96,-16.37935;Inherit;False;0;0;_MainTex_TexelSize;Pass;False;0;5;FLOAT4;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
@@ -187,7 +188,8 @@ Node;AmplifyShaderEditor.SamplerNode;145;1490.92,-407.4106;Inherit;True;Property
 Node;AmplifyShaderEditor.RangedFloatNode;144;1511.737,-495.6285;Inherit;False;Property;_Intensity;Intensity;5;0;Create;True;0;0;False;0;False;0;0;0;1;0;1;FLOAT;0
 Node;AmplifyShaderEditor.LerpOp;143;1919.564,-183.5361;Inherit;False;3;0;COLOR;0,0,0,0;False;1;COLOR;0,0,0,0;False;2;FLOAT;0;False;1;COLOR;0
 Node;AmplifyShaderEditor.TexelSizeNode;138;-1443.877,-111.5946;Inherit;False;-1;1;0;SAMPLER2D;;False;5;FLOAT4;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
-Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;0;2218.607,-186.489;Float;False;True;-1;2;ASEMaterialInspector;0;2;Dithered/DitheredPostProcess;32139be9c1eb75640a847f011acf3bcf;True;SubShader 0 Pass 0;0;0;SubShader 0 Pass 0;1;False;False;False;False;False;False;False;False;False;True;2;False;-1;False;False;False;False;False;True;2;False;-1;True;7;False;-1;False;False;False;0;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;2;0;;0;0;Standard;0;0;1;True;False;;False;0
+Node;AmplifyShaderEditor.DynamicAppendNode;149;2083.97,-179.6583;Inherit;False;FLOAT4;4;0;FLOAT3;0,0,0;False;1;FLOAT;0;False;2;FLOAT;0;False;3;FLOAT;1;False;1;FLOAT4;0
+Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;0;2441.607,-215.489;Float;False;True;-1;2;ASEMaterialInspector;0;2;Dithered/DitheredPostProcess;32139be9c1eb75640a847f011acf3bcf;True;SubShader 0 Pass 0;0;0;SubShader 0 Pass 0;1;False;False;False;False;False;False;False;False;False;True;2;False;-1;False;False;False;False;False;True;2;False;-1;True;7;False;-1;False;False;False;0;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;2;0;;0;0;Standard;0;0;1;True;False;;False;0
 WireConnection;100;0;146;3
 WireConnection;100;1;102;0
 WireConnection;103;0;146;4
@@ -231,6 +233,7 @@ WireConnection;143;0;145;0
 WireConnection;143;1;78;0
 WireConnection;143;2;144;0
 WireConnection;138;0;19;0
-WireConnection;0;0;143;0
+WireConnection;149;0;143;0
+WireConnection;0;0;149;0
 ASEEND*/
-//CHKSM=AB12DE3E3BB222A8ABEFFCF1D2E80A50F7051561
+//CHKSM=258FA92033CEDED991D941E36C96B031E1DCADF6
