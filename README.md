@@ -3,6 +3,8 @@ Customizable limited palette dithering library for Unity
 
 ![C64](https://raw.githubusercontent.com/Ooseykins/QuickDither/main/Examples/example_C64.png)
 
+[Video example with included Mode13h palette](https://www.youtube.com/watch?v=rj8jCh_k3ns)
+
 
 ## Usage
 This library was tested using the standard renderer and gamma colour. Use the post processing v2 dithered effect with the pattern, primary, and secondary textures set. 4 Bayer patterns are included. Alternatively, use the dithered material on a "Raw Image" component with a render texture.
