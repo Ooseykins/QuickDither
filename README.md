@@ -7,7 +7,7 @@ Customizable limited palette dithering library for Unity
 
 [Video example with other palettes on Reddit](https://www.reddit.com/r/Unity3D/comments/mak26f/retro_pc_graphics_post_processing_i_made/)
 
-I always love to see people putting this to use! Please share projects using this effect with me on twitter [@Ooseykins](https://twitter.com/ooseykins)! If you need help, post an issue here on github or message me on twitter or discord Oose#2504!
+I always love to see people putting this to use! Please share projects using this effect with me on twitter [@Ooseykins](https://twitter.com/ooseykins)! If you need help, post an issue here on github or message me on twitter!
 
 ## Usage for standard renderer
 This library was tested using the standard renderer and gamma colour. Use the post processing v2 dithered effect with the pattern, primary, and secondary textures set. You can import post processing v2 from the Unity package manager. 4 Bayer patterns are included. Alternatively, use the dithered material on a "Raw Image" component with a render texture.
