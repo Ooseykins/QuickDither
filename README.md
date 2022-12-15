@@ -20,12 +20,14 @@ The functionality using URP requires outputting to a render texture of the desir
 - **Output Camera:** culling mask (to UI only)
 - **Canvas:** render mode, render camera (to output camera)
 - **Canvas Scaler:** UI scale mode, reference resolution, screen match mode (expand)
+- **Output render texture:** set filtering to point
 
 #### URP Specific tips
 - Modify the palette in use on the dithered material
 - The dithered material can be used with any texture, it doesn't have to be a render texture
 - Quickly remap dark/light areas of the image using the remap property on the dithered material
 - When adding the render texture image to the canvas the "Set Native Size" button helps to keep everything pixel perfect
+- Gamma and linear color space look VERY different using this post processing effect. I recommend gamma color space in Project Settings -> Player -> Other Settings -> Color Space
 
 ## Creating 3D dither textures
 Add the PaletteTextureGenerator component to an empty gameobject. Pressing "Generate & Save Palette" will save the current palette to a 3D texture asset in "Assets/Dithered Palettes", with the name of the attached gameobject.
