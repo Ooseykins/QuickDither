@@ -7,10 +7,12 @@ Customizable limited palette dithering library for Unity
 
 [Video example with other palettes on Reddit](https://www.reddit.com/r/Unity3D/comments/mak26f/retro_pc_graphics_post_processing_i_made/)
 
+[Example in a full product: Steam store page for Eclipsium](https://store.steampowered.com/app/2419670/Eclipsium/)
+
 I always love to see people putting this to use! Please share projects using this effect with me on twitter [@Ooseykins](https://twitter.com/ooseykins)! If you need help, post an issue here on github or message me on twitter!
 
 ## Usage for standard renderer
-This library was tested using the standard renderer and gamma colour. Use the post processing v2 dithered effect with the pattern, primary, and secondary textures set. You can import post processing v2 from the Unity package manager. 4 Bayer patterns are included. Alternatively, use the dithered material on a "Raw Image" component with a render texture.
+This library was tested using the standard renderer and gamma colour. Use the post processing v2 dithered effect with the pattern, primary, and secondary textures set. You can import post processing v2 from the Unity package manager. 4 Bayer patterns are included. Alternatively, use the dithered material on a "Raw Image" component with a render texture. Try adding the shader to "Always Included Shaders" in Project Settings -> Graphics if the effect is not working in standalone builds.
 
 ## Usage for universal render pipeline (URP)
 The functionality using URP requires outputting to a render texture of the desired resolution, then rendering it to a seperate camera-space UI image using the dithered shader/material. The shader graph source is included as well as an example scene with a working camera setup.
